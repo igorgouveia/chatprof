@@ -1,0 +1,21 @@
+<ion-row *ngFor="let group of itemGroups">
+	<ion-col no-padding col-6 *ngFor="let item of group">
+		<ion-card *ngIf="!item.price" (click)="itemClicked(item)">
+			<ion-card-header>{{item.title}}</ion-card-header>
+			<div *ngIf="!!item.thumb">
+				<img src="{{item.thumb[0].url}}">
+			</div>
+		</ion-card>
+
+		<ion-card *ngIf="item.price" (click)="itemClicked(item)">
+			<div *ngIf="!!item.thumb">
+				<img src="{{item.thumb[0].url}}">
+			</div>
+			<ion-item>
+				<h2>{{item.title}}</h2>
+				<h4 *ngIf="!item.price.concat">{{item.price | currency:'USD':true}}</h4>
+				<h4 *ngIf="item.price.concat">{{item.price[0].value | currency:'USD':true}}</h4>
+			</ion-item>
+		</ion-card>
+	</ion-col>
+</ion-row>

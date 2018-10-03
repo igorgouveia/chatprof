@@ -1,0 +1,40 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>{{title}}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-list text-wrap>
+		<ng-container *ngFor="let message of (messages$ | async) ">
+		<ion-item style="background:aquamarine" *ngIf="(message.from === usuario)">
+			<h2 align="right"><strong>Você</strong></h2>
+			<h3 align="right">{{message.text}}</h3>
+			<h6 style="font-size: 10px; color: gray" align="left">{{message.createdAt}}</h6>
+		</ion-item>
+		<ion-item  style="background:bisque" *ngIf="(message.from !== usuario)">
+				<h2 align="left"><strong>{{message.from}}</strong></h2>
+				<h3 align="left">{{message.text}}</h3>
+				<h6 style="font-size: 10px; color: gray" align="right">{{message.createdAt | date : 'short'}}</h6>
+			</ion-item>
+		</ng-container>
+	</ion-list>
+</ion-content>
+
+<ion-footer>
+	<ion-toolbar>
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<ion-input placeholder="Digite sua mensagem" #input [disabled]="!auth.authenticated"></ion-input>
+				</ion-col>
+				<ion-col col-auto>
+					<button ion-button clear (click)="send(input.value); input.value = '';" [disabled]="!input.value || !auth.authenticated">Enviar</button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-toolbar>
+</ion-footer>

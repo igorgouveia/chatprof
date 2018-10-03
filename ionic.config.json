@@ -1,0 +1,14 @@
+{
+  "name": "firebase-toolkit",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://itajuba.myscriptcase.com"
+    }
+  ],
+  "pro_id": "06f05b1e"
+}

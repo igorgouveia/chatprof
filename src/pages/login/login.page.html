@@ -1,0 +1,41 @@
+<ion-content padding style="background:url(assets/img/bg1200.png) no-repeat center;background-size:cover;">
+
+<div  style="color: #fff; font-size: 40px; margin-top: 30px; margin-bottom: 25px;" align="center">CHAT - COM241<BR>PROFESSOR</div>
+
+<div class="spacer" style="width:300px;height:5px;" id="login-spacer1"></div>
+
+<form (ngSubmit)="login()" [formGroup]="form">
+
+	<ion-list inset>
+
+		<ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched', 'dirty']) }">
+			<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+		</ion-item>
+
+		<div ngxErrors="email" #emailErrors="ngxErrors">
+			<div [ngxError]="['email', 'required']" [when]="['touched', 'dirty']">Insira um email válido</div>
+		</div>
+
+		<ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
+			<ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
+		</ion-item>
+
+		<div ngxErrors="password" #passwordErrors="ngxErrors">
+			<div [ngxError]="['minlength', 'required']" [when]="['touched']">Deve ter pelo menos 5 caracteres</div>
+		</div>
+
+	</ion-list>
+
+	<div padding-horizontal>
+		<div class="form-error">{{loginError}}</div>
+
+		<button ion-button id="login-entrar" color="primary" block round type="submit" [disabled]="!form.valid">Entrar</button>
+		<div class="login-footer">
+			<button id="login-esqueceu" ion-button clear color="light" block small (click)="resetPassword()">
+				Esqueceu a senha?						
+			</button>
+
+		</div>
+	</div>
+</form>
+</ion-content>

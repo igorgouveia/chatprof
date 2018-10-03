@@ -1,0 +1,48 @@
+
+<ion-header>
+	<ion-navbar>
+		<ion-title>Criar Conta</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding style="background:url(assets/img/bg1200.png) no-repeat center;background-size:cover;">
+
+	<div  style="color: #fff; font-size: 40px; margin-top: 30px; margin-bottom: 25px;" align="center">CHAT <br>DA TURMA</div>
+
+<div class="spacer" style="width:300px;height:5px;" id="login-spacer1"></div>
+
+	<form (ngSubmit)="signup()" [formGroup]="form">
+		<ion-list inset>
+			<ion-item>
+				<ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
+			</ion-item>
+			<div class="spacer" style="width:300px;height:5px;"></div>
+			
+			<ion-item>
+				<ion-input type="text" placeholder="Matricula" formControlName="matricula"></ion-input>
+			</ion-item>
+			<div class="spacer" style="width:300px;height:5px;"></div>
+			
+			<ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched']) }">
+				<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+			</ion-item>
+
+			<div ngxErrors="email" #emailErrors="ngxErrors">
+				<div [ngxError]="['email', 'required']" [when]="['touched']">Digite um email válido</div>
+			</div>
+
+			<ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
+				<ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
+			</ion-item>
+
+			<div ngxErrors="password" #passwordErrors="ngxErrors">
+				<div [ngxError]="['minlength', 'required']" [when]="['touched']">Deve ter pelo menos 6 caracteres</div>
+			</div>
+		</ion-list>
+
+		<div padding-horizontal>
+			<div class="form-error">{{signupError}}</div>
+			<button ion-button id="login-cadastrar" color="primary" block type="submit" [disabled]="!form.valid">Cadastrar</button>
+		</div>
+	</form>
+</ion-content>

@@ -1,0 +1,4 @@
+<div class="{{ size === 'big' ? 'big' : 'small' }}">
+	<div *ngIf="!hasImage" class="initials">{{initials}}</div>
+	<img *ngIf="hasImage" src="{{user.avatar[0].url}}">
+</div>

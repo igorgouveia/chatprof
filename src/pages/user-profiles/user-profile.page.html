@@ -1,0 +1,47 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>{{item.title}}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<div padding text-center class="avatar-wrapper">
+		<as-avatar [user]="item" [size]="'big'"></as-avatar>
+	</div>
+
+	<div text-center>
+		<h3>{{item.firstName}} {{item.lastName}}</h3>
+		<p>{{item.title}}, {{item.email}}</p>
+	</div>
+
+	<div padding>
+		<div padding-top *ngIf="!!item.bio">
+			<h6>Biography</h6>
+			<p>{{item.bio}}</p>
+		</div>
+
+		<div padding-top>{{item.address}}</div>
+	</div>
+
+	<ion-card>
+		<ion-card-header>Contact</ion-card-header>
+
+		<ion-list>
+			<button ion-item (click)="call()">
+				<ion-icon name="call" item-left></ion-icon> Phone
+			</button>
+
+			<button ion-item (click)="sendEmail()">
+				<ion-icon name="mail" item-left></ion-icon> Email
+			</button>
+
+			<button ion-item (click)="openLinkedIn()">
+				<ion-icon name="logo-linkedin" item-left></ion-icon> Linked In
+			</button>
+
+			<button ion-item (click)="openPage()">
+				<ion-icon name="globe" item-left></ion-icon> Webpage
+			</button>
+		</ion-list>
+	</ion-card>
+</ion-content>
