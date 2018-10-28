@@ -3,22 +3,24 @@
 		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title>{{title}}</ion-title>
+		<ion-title>Chat</ion-title>
 	</ion-navbar>
 </ion-header>
 
 <ion-content>
 	<ion-list text-wrap>
 		<ng-container *ngFor="let message of (messages$ | async) ">
-		<ion-item style="background:aquamarine" *ngIf="(message.from === usuario)">
-			<h2 align="right"><strong>Você</strong></h2>
-			<h3 align="right">{{message.text}}</h3>
-			<h6 style="font-size: 10px; color: gray" align="left">{{message.createdAt}}</h6>
-		</ion-item>
-		<ion-item  style="background:bisque" *ngIf="(message.from !== usuario)">
-				<h2 align="left"><strong>{{message.from}}</strong></h2>
+			<ion-item style="background:aquamarine" *ngIf="(message.from === usuario)">
+				<h2 align="right"><strong>Você</strong></h2>
+				<h3 align="right">{{message.text}}</h3>
+				<h6 style="font-size: 10px; color: gray" align="left">{{message.createdAt}}</h6>
+			</ion-item>
+			<ion-item style="background:bisque" *ngIf="(message.from !== usuario)">
+				<ng-container *ngFor="let item1 of items1$ | async : true">
+					<h2 *ngIf="item1.uid === message.from" align="left"><strong>Aluno {{item1.nome}}</strong></h2>
+				</ng-container>
 				<h3 align="left">{{message.text}}</h3>
-				<h6 style="font-size: 10px; color: gray" align="right">{{message.createdAt | date : 'short'}}</h6>
+				<h6 style="font-size: 10px; color: gray" align="right">{{message.createdAt}}</h6>
 			</ion-item>
 		</ng-container>
 	</ion-list>

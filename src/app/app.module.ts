@@ -21,6 +21,9 @@ import { ChatModule } from '../pages/chat/chat.module';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password.page';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
+import { HomePage } from '../pages/home/home';
+import { PerguntasPage } from '../pages/perguntas/perguntas';
+import { AlunosPage } from '../pages/alunos/alunos';
 
 @NgModule({
 	declarations: [
@@ -28,6 +31,9 @@ import { Base64 } from '@ionic-native/base64';
 		LoginPage,
 		SignupPage,
 		ResetPasswordPage,	
+		HomePage,
+		PerguntasPage,
+		AlunosPage
 		],
 	imports: [
 		BrowserModule,
@@ -45,6 +51,9 @@ import { Base64 } from '@ionic-native/base64';
 		LoginPage,
 		SignupPage,
 		ResetPasswordPage,
+		HomePage,
+		PerguntasPage,
+		AlunosPage
 		
 	],
 	providers: [

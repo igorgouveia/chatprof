@@ -1,0 +1,31 @@
+
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Perguntas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ng-container *ngFor="let item of items$ | async : true">
+      <ion-card>
+        <ion-item>
+          <ng-container *ngFor="let item1 of items1$ | async : true">
+          <h2 *ngIf="item1.uid === item.uid">{{item1.nome}}</h2>
+          </ng-container>
+          <p>{{item.data}}</p>
+        </ion-item>
+        <ion-card-content>
+          <p>{{item.pergunta}}</p>
+        </ion-card-content>      
+      </ion-card>
+      
+    </ng-container>
+
+</ion-content>

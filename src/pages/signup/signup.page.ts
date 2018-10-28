@@ -4,8 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from 'ionic-angular';
 
 import { AuthService } from '../../services/auth.service';
-import { ChatRoomsPage } from '../chat/chat-rooms.page';
-
+import { HomePage } from '../home/home';
 @Component({
 	selector: 'as-page-signup',
 	templateUrl: './signup.page.html'
@@ -36,7 +35,7 @@ export class SignupPage {
 			password: data.password
 		};
 		this.auth.signUp(credentials).then(
-			() => this.navCtrl.setRoot(ChatRoomsPage),
+			() => this.navCtrl.setRoot(HomePage),
 			error => this.signupError = error.message
 		);
 	}

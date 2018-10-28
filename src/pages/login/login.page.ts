@@ -5,7 +5,8 @@ import { NavController } from 'ionic-angular';
 import { AuthService } from '../../services/auth.service';
 import { SignupPage } from '../signup/signup.page';
 import { ResetPasswordPage } from '../reset-password/reset-password.page';
-import { ChatRoomsPage } from '../chat/chat-rooms.page';
+import { HomePage } from '../home/home';
+
 
 @Component({
 	selector: 'as-page-login',
@@ -39,40 +40,8 @@ export class LoginPage {
 		};
 		this.auth.signInWithEmail(credentials)
 			.then(
-				() => this.navCtrl.setRoot(ChatRoomsPage),
+				() => this.navCtrl.setRoot(HomePage),
 				error => this.loginError = error.message
-			);
-	}
-
-	loginWithGithub() {
-		this.auth.signInWithGitHub()
-			.then(
-				() => this.navCtrl.setRoot(ChatRoomsPage),
-				error => console.log(error.message)
-			);
-	}
-
-	loginWithFacebook() {
-		this.auth.signInWithFacebook()
-			.then(
-				() => this.navCtrl.setRoot(ChatRoomsPage),
-				error => console.log(error.message)
-			);
-	}
-
-	loginWithGoogle() {
-		this.auth.signInWithGoogle()
-			.then(
-				() => this.navCtrl.setRoot(ChatRoomsPage),
-				error => console.log(error.message)
-			);
-	}
-
-	loginWithTwitter() {
-		this.auth.signInWithTwitter()
-			.then(
-				() => this.navCtrl.setRoot(ChatRoomsPage),
-				error => console.log(error.message)
 			);
 	}
 

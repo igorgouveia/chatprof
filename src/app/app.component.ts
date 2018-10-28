@@ -1,11 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar';
-
 import { App, MenuController, Nav, Platform } from 'ionic-angular';
-import { ChatRoomsPage } from '../pages/chat/chat-rooms.page';
 import { LoginPage } from '../pages/login/login.page';
 import { AuthService } from '../services/auth.service';
 import { ChatMessagesPage } from '../pages/chat/chat-messages.page';
+import { PerguntasPage } from '../pages/perguntas/perguntas';
+import { HomePage } from '../pages/home/home';
+import { AlunosPage } from '../pages/alunos/alunos';
 
 @Component({
 	templateUrl: './app.html'
@@ -28,12 +29,9 @@ export class MyApp {
 
 		// set our app's pages
 		this.pages = [
-			{ title: 'Perfil', component: ChatRoomsPage, icon: 'contact' },
+			{ title: 'Alunos', component: AlunosPage, icon: 'contacts' },
 			{ title: 'Chat', component: ChatMessagesPage, icon: 'chatboxes' },
-			{ title: 'Arquivos', component: ChatRoomsPage, icon: 'search' },
-			
-
-		
+			{ title: 'Perguntas', component: PerguntasPage, icon: 'help' },		
 		];
 	}
 
@@ -46,7 +44,7 @@ export class MyApp {
 			.subscribe(
 				user => {
 					if (user) {
-						this.rootPage = ChatRoomsPage;
+						this.rootPage = HomePage;
 					} else {
 						this.rootPage = LoginPage;			
 					}

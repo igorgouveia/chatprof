@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Alunos</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+
+      <ng-container *ngFor="let item1 of items1$ | async : true">
+        <ion-card>
+          <ion-item>
+            <h2 >Nome: {{item1.nome}}</h2>
+           
+            <h3>Numero de matrícula: {{item1.matricula}}</h3>
+          </ion-item>
+          <ion-card-content>
+            <p>Curso: {{item1.curso}}</p>
+          </ion-card-content>      
+        </ion-card>
+        
+      </ng-container>
+  
+  </ion-content>
